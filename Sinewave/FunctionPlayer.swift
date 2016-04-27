@@ -9,33 +9,91 @@
 import AVFoundation
 
 final class FunctionPlayer {
-    let engine: AVAudioEngine
-    let player: AVAudioPlayerNode
-    let mixer: AVAudioMixerNode
 
-    init() {
-        engine = AVAudioEngine()
-        player = AVAudioPlayerNode()
-        mixer = engine.mainMixerNode
-        engine.attachNode(player)
-    }
+    let renderTone: AURenderCallback = {
+        (passedData: UnsafeMutablePointer<Void>,
+        ioActionFlags: UnsafeMutablePointer<AudioUnitRenderActionFlags>,
+        timeStamp: UnsafePointer<AudioTimeStamp>,
+        busNumber: UInt32,
+        frames: UInt32,
+        ioData: UnsafeMutablePointer<AudioBufferList>) -> OSStatus in
 
-    func play(function function: FunctionGenerator) {
+        let buffer = UnsafeMutablePointer<Float32>(ioData.memory.mBuffers.mData)
 
-        let size = Int(function.end)
-
-        let buffer = AVAudioPCMBuffer(PCMFormat: mixer.outputFormatForBus(0), frameCapacity: UInt32(size))
-        buffer.frameLength = AVAudioFrameCount(100)
-
-        for (x, y) in function {
-            buffer.floatChannelData.memory[Int(x)] = Float(y)
+        for var frame = 0; frame < Int(frames); frame++ {
+            buffer[frame] = sin(Float(frame) * 2.0 * Float(M_PI) * 441 / 44100)
         }
 
-        try! engine.start()
+        return 0
+    }
 
-        engine.connect(player, to: mixer, format: mixer.outputFormatForBus(0))
-        player.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
-        player.play()
+    init() {
+
+        let outputDescription = makeOutputDescription()
+        let outputComponent = makeOutputComponent(description: outputDescription)
+        let outputInstance = makeOutputInstance(component: outputComponent)
+
+        setRenderCallback(instance: outputInstance, callback: self.renderTone)
+        setStreamFormat(instance: outputInstance)
+
+        AudioUnitInitialize(outputInstance)
+        AudioOutputUnitStart(outputInstance)
+    }
+
+    func makeOutputDescription() -> AudioComponentDescription {
+        var outputDescription = AudioComponentDescription()
+        outputDescription.componentType = kAudioUnitType_Output;
+//        outputDescription.componentSubType = kAudioUnitSubType_RemoteIO;
+        outputDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
+        outputDescription.componentFlags = 0;
+        outputDescription.componentFlagsMask = 0;
+        return outputDescription
+    }
+
+    func makeOutputComponent(description description: AudioComponentDescription) -> AudioComponent {
+        var description = description
+        return AudioComponentFindNext(nil, &description)
+    }
+
+    func makeOutputInstance(component component: AudioComponent) -> AudioComponentInstance {
+        var outputInstance: AudioComponentInstance = nil
+        //TODO: Handle error
+        let error = AudioComponentInstanceNew(component, &outputInstance)
+        return outputInstance
+    }
+
+    func setRenderCallback(instance instance: AudioComponentInstance, callback: AURenderCallback) {
+        var input = AURenderCallbackStruct(inputProc: callback, inputProcRefCon: nil)
+        //TODO: Handle error
+        let error = AudioUnitSetProperty(
+            instance, // unit
+            kAudioUnitProperty_SetRenderCallback, // id
+            kAudioUnitScope_Input, // scope
+            0, // element
+            &input, // data
+            UInt32(sizeof(AURenderCallbackStruct))) // data size
+    }
+
+    func setStreamFormat(instance instance: AudioComponentInstance) {
+
+        var streamFormat = AudioStreamBasicDescription()
+        streamFormat.mSampleRate = 44100
+        streamFormat.mFormatID = kAudioFormatLinearPCM
+        streamFormat.mFormatFlags = kAudioFormatFlagsNativeFloatPacked | kAudioFormatFlagIsNonInterleaved;
+        streamFormat.mBytesPerPacket = 4; // 4 bytes for 'float'
+        streamFormat.mBytesPerFrame = 4; // sizeof(float) * 1 channel
+        streamFormat.mFramesPerPacket = 1; // 1 channel
+        streamFormat.mChannelsPerFrame = 1; // 1 channel
+        streamFormat.mBitsPerChannel = 8 * 4; // 1 channel * 8 bits/byte * sizeof(float)
+
+        //TODO: Handle error
+        let error = AudioUnitSetProperty(
+            instance, // unit
+            kAudioUnitProperty_StreamFormat, // id
+            kAudioUnitScope_Input, // scope
+            0, // element
+            &streamFormat, // data
+            UInt32(sizeof(AudioStreamBasicDescription))) // data size
     }
 }
 

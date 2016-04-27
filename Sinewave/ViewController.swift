@@ -42,7 +42,7 @@ class ViewController: NSViewController {
 
     func playSound() {
         let function = FunctionGenerator(end: 100, diff: 1, function: sinFunction)
-        player.play(function: function)
+//        player.play(function: function)
     }
 
     func updateSinewaveView() {
