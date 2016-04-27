@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3709176B1CD008AA009A5AC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709176A1CD008AA009A5AC2 /* AppDelegate.swift */; };
+		3709176D1CD008AA009A5AC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709176C1CD008AA009A5AC2 /* ViewController.swift */; };
+		3709176F1CD008AA009A5AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3709176E1CD008AA009A5AC2 /* Assets.xcassets */; };
+		370917721CD008AA009A5AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370917701CD008AA009A5AC2 /* Main.storyboard */; };
+		3709177A1CD00AB4009A5AC2 /* SinewaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370917791CD00AB4009A5AC2 /* SinewaveView.swift */; };
+		3709177C1CD016D3009A5AC2 /* FunctionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709177B1CD016D3009A5AC2 /* FunctionGenerator.swift */; };
+		3709177E1CD08A1A009A5AC2 /* FunctionPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		370917671CD008A9009A5AC2 /* Sinewave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sinewave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3709176A1CD008AA009A5AC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3709176C1CD008AA009A5AC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3709176E1CD008AA009A5AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		370917711CD008AA009A5AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		370917731CD008AA009A5AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		370917791CD00AB4009A5AC2 /* SinewaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinewaveView.swift; sourceTree = "<group>"; };
+		3709177B1CD016D3009A5AC2 /* FunctionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionGenerator.swift; sourceTree = "<group>"; };
+		3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionPlayer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		370917641CD008A9009A5AC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3709175E1CD008A9009A5AC2 = {
+			isa = PBXGroup;
+			children = (
+				370917691CD008A9009A5AC2 /* Sinewave */,
+				370917681CD008A9009A5AC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		370917681CD008A9009A5AC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				370917671CD008A9009A5AC2 /* Sinewave.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		370917691CD008A9009A5AC2 /* Sinewave */ = {
+			isa = PBXGroup;
+			children = (
+				3709176A1CD008AA009A5AC2 /* AppDelegate.swift */,
+				3709176C1CD008AA009A5AC2 /* ViewController.swift */,
+				3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */,
+				3709177B1CD016D3009A5AC2 /* FunctionGenerator.swift */,
+				370917791CD00AB4009A5AC2 /* SinewaveView.swift */,
+				3709176E1CD008AA009A5AC2 /* Assets.xcassets */,
+				370917701CD008AA009A5AC2 /* Main.storyboard */,
+				370917731CD008AA009A5AC2 /* Info.plist */,
+			);
+			path = Sinewave;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		370917661CD008A9009A5AC2 /* Sinewave */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 370917761CD008AA009A5AC2 /* Build configuration list for PBXNativeTarget "Sinewave" */;
+			buildPhases = (
+				370917631CD008A9009A5AC2 /* Sources */,
+				370917641CD008A9009A5AC2 /* Frameworks */,
+				370917651CD008A9009A5AC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sinewave;
+			productName = Sinewave;
+			productReference = 370917671CD008A9009A5AC2 /* Sinewave.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3709175F1CD008A9009A5AC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = dvappel;
+				TargetAttributes = {
+					370917661CD008A9009A5AC2 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 370917621CD008A9009A5AC2 /* Build configuration list for PBXProject "Sinewave" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3709175E1CD008A9009A5AC2;
+			productRefGroup = 370917681CD008A9009A5AC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				370917661CD008A9009A5AC2 /* Sinewave */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		370917651CD008A9009A5AC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3709176F1CD008AA009A5AC2 /* Assets.xcassets in Resources */,
+				370917721CD008AA009A5AC2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		370917631CD008A9009A5AC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3709177E1CD08A1A009A5AC2 /* FunctionPlayer.swift in Sources */,
+				3709177A1CD00AB4009A5AC2 /* SinewaveView.swift in Sources */,
+				3709176D1CD008AA009A5AC2 /* ViewController.swift in Sources */,
+				3709176B1CD008AA009A5AC2 /* AppDelegate.swift in Sources */,
+				3709177C1CD016D3009A5AC2 /* FunctionGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		370917701CD008AA009A5AC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				370917711CD008AA009A5AC2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		370917741CD008AA009A5AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		370917751CD008AA009A5AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		370917771CD008AA009A5AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sinewave/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.dvappel.Sinewave;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		370917781CD008AA009A5AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sinewave/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.dvappel.Sinewave;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		370917621CD008A9009A5AC2 /* Build configuration list for PBXProject "Sinewave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				370917741CD008AA009A5AC2 /* Debug */,
+				370917751CD008AA009A5AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		370917761CD008AA009A5AC2 /* Build configuration list for PBXNativeTarget "Sinewave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				370917771CD008AA009A5AC2 /* Debug */,
+				370917781CD008AA009A5AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3709175F1CD008A9009A5AC2 /* Project object */;
+}
