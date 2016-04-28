@@ -9,7 +9,7 @@
 import Cocoa
 import AVFoundation
 
-class ViewController: NSViewController {
+class SinewaveViewController: NSViewController {
 
     lazy var player: FunctionPlayer = FunctionPlayer(thetaFunction: self.thetaFunction)
 
@@ -42,8 +42,6 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSApp.windows.first?.delegate = self
-
         self.player.start()
 
         self.updateSinewaveView()
@@ -51,6 +49,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func frequencySliderChanged(slider: NSSlider) {
+        print(slider.doubleValue)
         self.frequency = slider.doubleValue
     }
 
@@ -60,25 +59,17 @@ class ViewController: NSViewController {
 }
 
 //MARK: Updating views
-extension ViewController {
+extension SinewaveViewController {
     func updateSoundPlayer() {
         player.amplitude = self.volume
         player.frequency = self.frequency
     }
 
     func updateSinewaveView() {
-        let points = (0..<Int(view.frame.width))
-            .map(Double.init)
+
+        let points = 0.0.stride(through: Double(view.frame.width), by: 0.2)
             .map { (x: $0, y: sinFunction($0)) }
 
         sinewaveView.points = points
-    }
-}
-
-//MARK: Resize detection
-extension ViewController: NSWindowDelegate {
-    func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
-        self.updateSinewaveView()
-        return frameSize
     }
 }

@@ -12,7 +12,6 @@
 		3709176F1CD008AA009A5AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3709176E1CD008AA009A5AC2 /* Assets.xcassets */; };
 		370917721CD008AA009A5AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370917701CD008AA009A5AC2 /* Main.storyboard */; };
 		3709177A1CD00AB4009A5AC2 /* SinewaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370917791CD00AB4009A5AC2 /* SinewaveView.swift */; };
-		3709177C1CD016D3009A5AC2 /* FunctionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709177B1CD016D3009A5AC2 /* FunctionGenerator.swift */; };
 		3709177E1CD08A1A009A5AC2 /* FunctionPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		370917711CD008AA009A5AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		370917731CD008AA009A5AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		370917791CD00AB4009A5AC2 /* SinewaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinewaveView.swift; sourceTree = "<group>"; };
-		3709177B1CD016D3009A5AC2 /* FunctionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionGenerator.swift; sourceTree = "<group>"; };
 		3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +59,6 @@
 				3709176A1CD008AA009A5AC2 /* AppDelegate.swift */,
 				3709176C1CD008AA009A5AC2 /* ViewController.swift */,
 				3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */,
-				3709177B1CD016D3009A5AC2 /* FunctionGenerator.swift */,
 				370917791CD00AB4009A5AC2 /* SinewaveView.swift */,
 				3709176E1CD008AA009A5AC2 /* Assets.xcassets */,
 				370917701CD008AA009A5AC2 /* Main.storyboard */,
@@ -144,7 +141,6 @@
 				3709177A1CD00AB4009A5AC2 /* SinewaveView.swift in Sources */,
 				3709176D1CD008AA009A5AC2 /* ViewController.swift in Sources */,
 				3709176B1CD008AA009A5AC2 /* AppDelegate.swift in Sources */,
-				3709177C1CD016D3009A5AC2 /* FunctionGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

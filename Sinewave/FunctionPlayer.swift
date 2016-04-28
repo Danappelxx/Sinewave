@@ -32,12 +32,14 @@ final class FunctionPlayer {
         let buffer = UnsafeMutablePointer<Float32>(ioData.memory.mBuffers.mData)
 
         var theta = player.theta
-        let thetaIncrement = player.thetaFunction(frequency: player.frequency, sampleRate: player.sampleRate)
+
+        let increment = player.thetaFunction(frequency: player.frequency, sampleRate: player.sampleRate)
 
         //TODO: Move this logic to the sin function in ViewController
         for frame in 0..<Int(frames) {
             buffer[frame] = Float32(sin(theta) * player.amplitude)
-            theta += thetaIncrement
+
+            theta += increment
             if theta > 2*M_PI {
                 theta -= 2*M_PI
             }
@@ -123,5 +125,9 @@ final class FunctionPlayer {
 
     func start() {
         AudioOutputUnitStart(outputInstance)
+    }
+
+    func stop() {
+        AudioOutputUnitStop(outputInstance)
     }
 }
