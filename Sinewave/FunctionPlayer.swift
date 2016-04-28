@@ -10,6 +10,13 @@ import AVFoundation
 
 final class FunctionPlayer {
 
+    var theta: Float = 0
+    var function: FunctionGenerator
+
+    var frequency: Float = 440
+    var amplitude: Float = 1
+    let sampleRate: Float = 44100
+
     let renderTone: AURenderCallback = {
         (passedData: UnsafeMutablePointer<Void>,
         ioActionFlags: UnsafeMutablePointer<AudioUnitRenderActionFlags>,
@@ -18,16 +25,29 @@ final class FunctionPlayer {
         frames: UInt32,
         ioData: UnsafeMutablePointer<AudioBufferList>) -> OSStatus in
 
+        let player = unsafeBitCast(passedData, FunctionPlayer.self)
+
         let buffer = UnsafeMutablePointer<Float32>(ioData.memory.mBuffers.mData)
 
-        for var frame = 0; frame < Int(frames); frame++ {
-            buffer[frame] = sin(Float(frame) * 2.0 * Float(M_PI) * 441 / 44100)
+        var theta = player.theta
+        let thetaIncrement = 2*Float(M_PI) * player.frequency/player.sampleRate
+
+        //TODO: Move this logic to the sin function in ViewController
+        for frame in 0..<Int(frames) {
+            buffer[frame] = sin(theta) * player.amplitude
+            theta += thetaIncrement
+            if theta > 2*Float(M_PI) {
+                theta -= 2*Float(M_PI)
+            }
         }
+
+        player.theta = theta
 
         return 0
     }
 
-    init() {
+    init(function: FunctionGenerator) {
+        self.function = function
 
         let outputDescription = makeOutputDescription()
         let outputComponent = makeOutputComponent(description: outputDescription)
@@ -63,7 +83,10 @@ final class FunctionPlayer {
     }
 
     func setRenderCallback(instance instance: AudioComponentInstance, callback: AURenderCallback) {
-        var input = AURenderCallbackStruct(inputProc: callback, inputProcRefCon: nil)
+
+        let selfPointer = UnsafeMutablePointer<Void>(Unmanaged.passUnretained(self).toOpaque())
+        var input = AURenderCallbackStruct(inputProc: callback, inputProcRefCon: selfPointer)
+
         //TODO: Handle error
         let error = AudioUnitSetProperty(
             instance, // unit
@@ -96,5 +119,3 @@ final class FunctionPlayer {
             UInt32(sizeof(AudioStreamBasicDescription))) // data size
     }
 }
-
-
