@@ -11,6 +11,8 @@ import AVFoundation
 
 class ViewController: NSViewController {
 
+    lazy var player: FunctionPlayer = FunctionPlayer(thetaFunction: self.thetaFunction)
+
     @IBOutlet weak var sinewaveView: SinewaveView!
 
     var volume: Double = 1 {
@@ -26,31 +28,26 @@ class ViewController: NSViewController {
         }
     }
 
-    lazy var sinFunction: Double -> Double = { x in // creates reference cycle, but thats OK ;)
-        // f(x) = vol * sin(x * 2pi * (freq/samplerate))
-        return self.volume * sin(Double(x) * (2 * M_PI) * (self.frequency / 44100))
+    let thetaFunction: (frequency: Double, sampleRate: Double) -> Double = { frequency, sampleRate in
+        return 2*M_PI * frequency/sampleRate
     }
 
-    lazy var player: FunctionPlayer = FunctionPlayer(function: self.soundFunction)
+    lazy var sinFunction: Double -> Double = { x in
+        // creates reference cycle, but thats OK ;)
 
-    // from 0 to width by 512 (should not be hardcoded), using sinFunction
-    lazy var soundFunction: FunctionGenerator = FunctionGenerator(
-        end: 512,
-        diff: 1,
-        function: self.sinFunction)
-
-    // from 0 to width by 0.5, using sinFunction
-    lazy var drawFunction: FunctionGenerator = FunctionGenerator(
-        end: Double(self.sinewaveView.frame.width),
-        diff: 0.5,
-        function: self.sinFunction)
+        // f(x) = amplitude * sin(sample * 2pi * (freq/samplerate))
+        return self.volume * sin(Double(x) * self.thetaFunction(frequency: self.frequency, sampleRate: 44100))
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NSApp.windows.first?.delegate = self
+
+        self.player.start()
+
         self.updateSinewaveView()
         self.updateSoundPlayer()
-        NSApp.windows.first?.delegate = self
     }
 
     @IBAction func frequencySliderChanged(slider: NSSlider) {
@@ -65,12 +62,15 @@ class ViewController: NSViewController {
 //MARK: Updating views
 extension ViewController {
     func updateSoundPlayer() {
-        player.frequency = Float(self.frequency)
-        player.amplitude = Float(self.volume)
+        player.amplitude = self.volume
+        player.frequency = self.frequency
     }
 
     func updateSinewaveView() {
-        let points = Array(drawFunction)
+        let points = (0..<Int(view.frame.width))
+            .map(Double.init)
+            .map { (x: $0, y: sinFunction($0)) }
+
         sinewaveView.points = points
     }
 }
@@ -78,12 +78,6 @@ extension ViewController {
 //MARK: Resize detection
 extension ViewController: NSWindowDelegate {
     func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
-        let old = self.drawFunction
-        self.drawFunction = FunctionGenerator(
-            start: old.start,
-            end: Double(frameSize.width),
-            diff: old.diff,
-            function: old.function)
         self.updateSinewaveView()
         return frameSize
     }

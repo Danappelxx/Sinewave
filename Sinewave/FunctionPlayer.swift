@@ -10,12 +10,14 @@ import AVFoundation
 
 final class FunctionPlayer {
 
-    var theta: Float = 0
-    var function: FunctionGenerator
+    private(set) var outputInstance: AudioComponentInstance
 
-    var frequency: Float = 440
-    var amplitude: Float = 1
-    let sampleRate: Float = 44100
+    let thetaFunction: (frequency: Double, sampleRate: Double) -> Double
+
+    var theta = 0.0
+    var frequency = 441.0
+    var amplitude = 1.0
+    let sampleRate = 44100.0
 
     let renderTone: AURenderCallback = {
         (passedData: UnsafeMutablePointer<Void>,
@@ -30,14 +32,14 @@ final class FunctionPlayer {
         let buffer = UnsafeMutablePointer<Float32>(ioData.memory.mBuffers.mData)
 
         var theta = player.theta
-        let thetaIncrement = 2*Float(M_PI) * player.frequency/player.sampleRate
+        let thetaIncrement = player.thetaFunction(frequency: player.frequency, sampleRate: player.sampleRate)
 
         //TODO: Move this logic to the sin function in ViewController
         for frame in 0..<Int(frames) {
-            buffer[frame] = sin(theta) * player.amplitude
+            buffer[frame] = Float32(sin(theta) * player.amplitude)
             theta += thetaIncrement
-            if theta > 2*Float(M_PI) {
-                theta -= 2*Float(M_PI)
+            if theta > 2*M_PI {
+                theta -= 2*M_PI
             }
         }
 
@@ -46,18 +48,18 @@ final class FunctionPlayer {
         return 0
     }
 
-    init(function: FunctionGenerator) {
-        self.function = function
+    init(thetaFunction: (frequency: Double, sampleRate: Double) -> Double) {
+        self.thetaFunction = thetaFunction
+        self.outputInstance = nil
 
         let outputDescription = makeOutputDescription()
         let outputComponent = makeOutputComponent(description: outputDescription)
-        let outputInstance = makeOutputInstance(component: outputComponent)
+        self.outputInstance = makeOutputInstance(component: outputComponent)
 
         setRenderCallback(instance: outputInstance, callback: self.renderTone)
         setStreamFormat(instance: outputInstance)
 
         AudioUnitInitialize(outputInstance)
-        AudioOutputUnitStart(outputInstance)
     }
 
     func makeOutputDescription() -> AudioComponentDescription {
@@ -117,5 +119,9 @@ final class FunctionPlayer {
             0, // element
             &streamFormat, // data
             UInt32(sizeof(AudioStreamBasicDescription))) // data size
+    }
+
+    func start() {
+        AudioOutputUnitStart(outputInstance)
     }
 }
