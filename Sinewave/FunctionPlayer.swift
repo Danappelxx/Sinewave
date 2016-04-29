@@ -12,8 +12,6 @@ final class FunctionPlayer {
 
     private(set) var outputInstance: AudioComponentInstance
 
-    let thetaFunction: (frequency: Double, sampleRate: Double) -> Double
-
     var theta = 0.0
     var frequency = 441.0
     var amplitude = 1.0
@@ -33,7 +31,7 @@ final class FunctionPlayer {
 
         var theta = player.theta
 
-        let increment = player.thetaFunction(frequency: player.frequency, sampleRate: player.sampleRate)
+        let increment = SinewaveViewController.theta(frequency: player.frequency, sampleRate: player.sampleRate)
 
         //TODO: Move this logic to the sin function in ViewController
         for frame in 0..<Int(frames) {
@@ -50,8 +48,7 @@ final class FunctionPlayer {
         return 0
     }
 
-    init(thetaFunction: (frequency: Double, sampleRate: Double) -> Double) {
-        self.thetaFunction = thetaFunction
+    init() {
         self.outputInstance = nil
 
         let outputDescription = makeOutputDescription()

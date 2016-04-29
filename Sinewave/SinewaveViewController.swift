@@ -9,9 +9,14 @@
 import Cocoa
 import AVFoundation
 
+protocol SinewaveViewControllerDelegate: class {
+    func redraw()
+}
+
 class SinewaveViewController: NSViewController {
 
-    lazy var player: FunctionPlayer = FunctionPlayer(thetaFunction: self.thetaFunction)
+    weak var delegate: SinewaveViewControllerDelegate?
+    let player = FunctionPlayer()
 
     @IBOutlet weak var sinewaveView: SinewaveView!
 
@@ -28,15 +33,11 @@ class SinewaveViewController: NSViewController {
         }
     }
 
-    let thetaFunction: (frequency: Double, sampleRate: Double) -> Double = { frequency, sampleRate in
-        return 2*M_PI * frequency/sampleRate
-    }
-
     lazy var sinFunction: Double -> Double = { x in
         // creates reference cycle, but thats OK ;)
 
         // f(x) = amplitude * sin(sample * 2pi * (freq/samplerate))
-        return self.volume * sin(Double(x) * self.thetaFunction(frequency: self.frequency, sampleRate: 44100))
+        return self.volume * sin(Double(x) * self.dynamicType.theta(frequency: self.frequency, sampleRate: 44100))
     }
 
     override func viewDidLoad() {
@@ -46,6 +47,11 @@ class SinewaveViewController: NSViewController {
 
         self.updateSinewaveView()
         self.updateSoundPlayer()
+    }
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window!.delegate = self
     }
 
     @IBAction func frequencySliderChanged(slider: NSSlider) {
@@ -71,5 +77,23 @@ extension SinewaveViewController {
             .map { (x: $0, y: sinFunction($0)) }
 
         sinewaveView.points = points
+        self.delegate?.redraw()
+    }
+}
+
+extension SinewaveViewController {
+    static func theta(frequency frequency: Double, sampleRate: Double) -> Double {
+        return 2*M_PI * frequency/sampleRate
+    }
+}
+
+extension SinewaveViewController: NSWindowDelegate {
+    func windowShouldClose(sender: AnyObject) -> Bool {
+        self.player.stop()
+        return true
+    }
+    func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
+        updateSinewaveView()
+        return frameSize
     }
 }
