@@ -35,7 +35,7 @@ class SinewaveView: NSView {
     }
 
     func offset(x: Double, y: Double) -> (x: Double, y: Double) {
-        let xOffset = 0.0//Double(self.frame.width / 2)
+        let xOffset = -5.0
         let yOffset = Double(self.frame.height / 2)
 
         return (x + xOffset, y + yOffset)

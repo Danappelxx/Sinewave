@@ -712,38 +712,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <slider focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T8m-CQ-Hc9">
-                                <rect key="frame" x="18" y="18" width="420" height="20"/>
-                                <sliderCell key="cell" continuous="YES" state="on" focusRingType="none" alignment="left" maxValue="1000" doubleValue="440" tickMarkPosition="above" sliderType="linear" id="rrT-0z-b67"/>
-                                <connections>
-                                    <action selector="frequencySliderChanged:" target="XfG-lQ-9wD" id="7MK-pQ-D0K"/>
-                                </connections>
-                            </slider>
                             <slider focusRingType="none" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qAR-AD-pi3">
-                                <rect key="frame" x="442" y="41" width="20" height="211"/>
+                                <rect key="frame" x="442" y="41" width="20" height="183"/>
                                 <sliderCell key="cell" continuous="YES" focusRingType="none" alignment="left" maxValue="5" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="Fgx-OR-uyy"/>
                                 <connections>
                                     <action selector="volumeSliderChanged:" target="XfG-lQ-9wD" id="q3b-8z-boC"/>
                                 </connections>
                             </slider>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="sme-MP-shz" customClass="SinewaveView" customModule="Sinewave" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="416" height="206"/>
+                                <rect key="frame" x="20" y="44" width="416" height="178"/>
                             </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fg6-l3-SXC">
+                                <rect key="frame" x="18" y="19" width="35" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="geX-2J-Hyx"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Freq" id="ovf-FU-4hk">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zb2-sM-eZ4">
+                                <rect key="frame" x="18" y="230" width="420" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="jox-fO-aoZ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Function" id="1sD-q9-uPK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T8m-CQ-Hc9">
+                                <rect key="frame" x="57" y="18" width="381" height="20"/>
+                                <sliderCell key="cell" continuous="YES" state="on" focusRingType="none" alignment="left" maxValue="1000" doubleValue="440" tickMarkPosition="above" sliderType="linear" id="rrT-0z-b67"/>
+                                <connections>
+                                    <action selector="frequencySliderChanged:" target="XfG-lQ-9wD" id="7MK-pQ-D0K"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="qAR-AD-pi3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="36y-KP-qHb"/>
-                            <constraint firstItem="sme-MP-shz" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="3Nv-gf-vMT"/>
+                            <constraint firstItem="zb2-sM-eZ4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="0Gb-F9-P8g"/>
                             <constraint firstAttribute="trailing" secondItem="qAR-AD-pi3" secondAttribute="trailing" constant="20" id="5eL-77-nYv"/>
                             <constraint firstItem="qAR-AD-pi3" firstAttribute="leading" secondItem="T8m-CQ-Hc9" secondAttribute="trailing" constant="8" id="6YB-cy-BmS"/>
                             <constraint firstItem="T8m-CQ-Hc9" firstAttribute="top" secondItem="sme-MP-shz" secondAttribute="bottom" constant="8" id="7XO-p4-mkF"/>
                             <constraint firstItem="qAR-AD-pi3" firstAttribute="leading" secondItem="sme-MP-shz" secondAttribute="trailing" constant="8" id="CAA-3G-HUj"/>
+                            <constraint firstItem="fg6-l3-SXC" firstAttribute="top" secondItem="sme-MP-shz" secondAttribute="bottom" constant="8" id="EKL-LO-c4b"/>
+                            <constraint firstItem="zb2-sM-eZ4" firstAttribute="width" secondItem="sme-MP-shz" secondAttribute="width" id="G5A-DG-hNY"/>
                             <constraint firstAttribute="bottom" secondItem="T8m-CQ-Hc9" secondAttribute="bottom" constant="20" id="HNT-Jr-rnI"/>
+                            <constraint firstItem="qAR-AD-pi3" firstAttribute="height" secondItem="sme-MP-shz" secondAttribute="height" id="QKl-OU-ppe"/>
                             <constraint firstItem="sme-MP-shz" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Sj2-Gt-Aox"/>
-                            <constraint firstItem="T8m-CQ-Hc9" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="d0d-dZ-pey"/>
+                            <constraint firstItem="T8m-CQ-Hc9" firstAttribute="leading" secondItem="fg6-l3-SXC" secondAttribute="trailing" constant="8" id="WkQ-Sn-hna"/>
+                            <constraint firstItem="fg6-l3-SXC" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="jnu-on-b5X"/>
+                            <constraint firstItem="sme-MP-shz" firstAttribute="top" secondItem="zb2-sM-eZ4" secondAttribute="bottom" constant="8" id="kyW-WL-Rvz"/>
+                            <constraint firstItem="zb2-sM-eZ4" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="lHN-eh-Wz5"/>
                             <constraint firstItem="T8m-CQ-Hc9" firstAttribute="top" secondItem="qAR-AD-pi3" secondAttribute="bottom" constant="8" id="m9h-99-5Xv"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="frequencyTextField" destination="fg6-l3-SXC" id="2XH-wY-mB9"/>
+                        <outlet property="functionTextField" destination="zb2-sM-eZ4" id="Iyo-Ek-1yd"/>
                         <outlet property="sinewaveView" destination="sme-MP-shz" id="nZA-h6-mrl"/>
                     </connections>
                 </viewController>

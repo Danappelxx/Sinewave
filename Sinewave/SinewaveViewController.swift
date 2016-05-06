@@ -19,6 +19,8 @@ class SinewaveViewController: NSViewController {
     let player = FunctionPlayer()
 
     @IBOutlet weak var sinewaveView: SinewaveView!
+    @IBOutlet weak var frequencyTextField: NSTextField!
+    @IBOutlet weak var functionTextField: NSTextField!
 
     var volume: Double = 1 {
         didSet {
@@ -26,7 +28,7 @@ class SinewaveViewController: NSViewController {
             self.updateSoundPlayer()
         }
     }
-    var frequency: Double = 441 {
+    var frequency: Double = 440 {
         didSet {
             self.updateSinewaveView()
             self.updateSoundPlayer()
@@ -55,7 +57,6 @@ class SinewaveViewController: NSViewController {
     }
 
     @IBAction func frequencySliderChanged(slider: NSSlider) {
-        print(slider.doubleValue)
         self.frequency = slider.doubleValue
     }
 
@@ -73,6 +74,9 @@ extension SinewaveViewController {
 
     func updateSinewaveView() {
 
+        frequencyTextField.stringValue = "\(Int(frequency))"
+        functionTextField.stringValue = self.dynamicType.function(volume, frequency: frequency, sampleRate: 44100)
+
         let points = 0.0.stride(through: Double(view.frame.width), by: 0.2)
             .map { (x: $0, y: sinFunction($0)) }
 
@@ -84,6 +88,11 @@ extension SinewaveViewController {
 extension SinewaveViewController {
     static func theta(frequency frequency: Double, sampleRate: Double) -> Double {
         return 2*M_PI * frequency/sampleRate
+    }
+
+    /// f(x) = amplitude * sin(sample * 2pi * (freq/samplerate))
+    static func function(amplitude: Double, frequency: Double, sampleRate: Double) -> String {
+        return "y = \(Int(10 * amplitude)) * sin(x * 2π * (\(Int(frequency)) / \(Int(sampleRate))) )"
     }
 }
 
