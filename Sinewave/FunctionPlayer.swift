@@ -61,6 +61,10 @@ final class FunctionPlayer {
         AudioUnitInitialize(outputInstance)
     }
 
+    deinit {
+        self.stop()
+    }
+
     func makeOutputDescription() -> AudioComponentDescription {
         var outputDescription = AudioComponentDescription()
         outputDescription.componentType = kAudioUnitType_Output;

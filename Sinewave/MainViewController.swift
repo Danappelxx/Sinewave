@@ -33,7 +33,7 @@ class MainViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.view.window!.delegate = self
+        self.view.window?.delegate = self
         self.redraw()
     }
 }
