@@ -14,9 +14,13 @@ class MainViewController: NSViewController {
     @IBOutlet weak var sinewaveView: SinewaveView!
 
     lazy var sinFunction: Double -> Double = { x in
-        let functions = self.sinewaveViewControllers.map { $0.sinFunction }
-        let y = functions.reduce(0) { $0 + $1(x) }
-        return y
+        guard !self.sinewaveViewControllers.isEmpty else { return 0 }
+
+        let y = self.sinewaveViewControllers
+            .map { $0.sinFunction }
+            .reduce(0) { $0 + $1(x) }
+
+        return y / Double(self.sinewaveViewControllers.count)
     }
 
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
@@ -30,6 +34,7 @@ class MainViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         self.view.window!.delegate = self
+        self.redraw()
     }
 }
 
@@ -40,6 +45,12 @@ extension MainViewController: SinewaveViewControllerDelegate {
             .map { (x: $0, y: self.sinFunction($0)) }
 
         sinewaveView.points = points
+    }
+
+    func removeChild(child: SinewaveViewController) {
+        guard let index = self.sinewaveViewControllers.indexOf(child) else { return }
+        self.sinewaveViewControllers.removeAtIndex(index)
+        self.redraw()
     }
 }
 

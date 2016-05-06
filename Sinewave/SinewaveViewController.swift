@@ -11,6 +11,7 @@ import AVFoundation
 
 protocol SinewaveViewControllerDelegate: class {
     func redraw()
+    func removeChild(child: SinewaveViewController)
 }
 
 class SinewaveViewController: NSViewController {
@@ -99,6 +100,7 @@ extension SinewaveViewController {
 extension SinewaveViewController: NSWindowDelegate {
     func windowShouldClose(sender: AnyObject) -> Bool {
         self.player.stop()
+        self.delegate?.removeChild(self)
         return true
     }
     func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
