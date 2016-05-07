@@ -8,13 +8,24 @@
 
 struct Note {
     let frequency: Double
-    let amplitude: Double = 1.0
+    let amplitude: Double
     let from: Double
     let to: Double
 }
 
 extension Note {
-    func makeRange() -> ClosedInterval<Double> {
+    func modify(frequency frequency: Double? = nil, amplitude: Double? = nil, from: Double? = nil, to: Double? = nil) -> Note {
+        return self.dynamicType.init(
+            frequency: frequency ?? self.frequency,
+            amplitude: amplitude ?? self.amplitude,
+            from: from ?? self.from,
+            to: to ?? self.to
+        )
+    }
+}
+
+extension Note {
+    func makeDateRange() -> ClosedInterval<Double> {
         return from...to
     }
 }
