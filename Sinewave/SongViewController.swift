@@ -36,6 +36,7 @@ class SongViewController: NSViewController {
         self.notes.append(Note(frequency: 440, amplitude: 1, from: 0, to: 1))
     }
     @IBAction func minusButtonPressed(sender: NSButton) {
+        guard notes.indices ~= notesTableView.selectedRow else { return }
         self.notes.removeAtIndex(self.notesTableView.selectedRow)
     }
     @IBAction func importButtonPressed(sender: NSButton) {
