@@ -12,7 +12,11 @@ class SongViewController: NSViewController {
 
     @IBOutlet weak var notesTableView: NSTableView!
 
-    var notes = [Note]()
+    var notes = [Note]() {
+        didSet {
+            self.notesTableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +34,17 @@ class SongViewController: NSViewController {
     }
     @IBAction func plusButtonPressed(sender: NSButton) {
         self.notes.append(Note(frequency: 440, amplitude: 1, from: 0, to: 1))
-        self.notesTableView.reloadData()
     }
     @IBAction func minusButtonPressed(sender: NSButton) {
         self.notes.removeAtIndex(self.notesTableView.selectedRow)
-        self.notesTableView.reloadData()
+    }
+    @IBAction func importButtonPressed(sender: NSButton) {
+        guard let
+            contents = importFileContents(),
+            notes = try? NoteImporter(input: contents).parse(mode: .CSV) else {
+            return
+        }
+        self.notes = notes
     }
 }
 
@@ -146,6 +156,22 @@ extension SongViewController {
             NSTimer.after(note.to) {
                 player.stop()
             }
+        }
+    }
+}
+
+//MARK: Importer
+extension SongViewController {
+    func importFileContents() -> String? {
+
+        let panel = NSOpenPanel()
+
+        switch panel.runModal() {
+
+        case NSModalResponseOK: return panel.URLs.first.flatMap { try? String(contentsOfURL: $0) }
+
+        default: return nil
+
         }
     }
 }

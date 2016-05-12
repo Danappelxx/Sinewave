@@ -16,6 +16,7 @@
 		376A256A1CDC56930062D5F9 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A25691CDC56930062D5F9 /* SongViewController.swift */; };
 		376A256C1CDC5AF90062D5F9 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A256B1CDC5AF90062D5F9 /* Note.swift */; };
 		376A256E1CDC6A360062D5F9 /* NSTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A256D1CDC6A360062D5F9 /* NSTimer.swift */; };
+		37F09B151CE4414A00CD53FC /* NoteImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F09B141CE4414A00CD53FC /* NoteImporter.swift */; };
 		37FE60311CD3F23A0036071A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FE60301CD3F23A0036071A /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		376A25691CDC56930062D5F9 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		376A256B1CDC5AF90062D5F9 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		376A256D1CDC6A360062D5F9 /* NSTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimer.swift; sourceTree = "<group>"; };
+		37F09B141CE4414A00CD53FC /* NoteImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteImporter.swift; sourceTree = "<group>"; };
 		37FE60301CD3F23A0036071A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				370917791CD00AB4009A5AC2 /* SinewaveView.swift */,
 				376A25691CDC56930062D5F9 /* SongViewController.swift */,
 				376A256B1CDC5AF90062D5F9 /* Note.swift */,
+				37F09B141CE4414A00CD53FC /* NoteImporter.swift */,
 				3709177D1CD08A1A009A5AC2 /* FunctionPlayer.swift */,
 				3709176E1CD008AA009A5AC2 /* Assets.xcassets */,
 				370917701CD008AA009A5AC2 /* Main.storyboard */,
@@ -151,6 +154,7 @@
 			files = (
 				3709177E1CD08A1A009A5AC2 /* FunctionPlayer.swift in Sources */,
 				3709177A1CD00AB4009A5AC2 /* SinewaveView.swift in Sources */,
+				37F09B151CE4414A00CD53FC /* NoteImporter.swift in Sources */,
 				376A256E1CDC6A360062D5F9 /* NSTimer.swift in Sources */,
 				376A256C1CDC5AF90062D5F9 /* Note.swift in Sources */,
 				3709176D1CD008AA009A5AC2 /* SinewaveViewController.swift in Sources */,

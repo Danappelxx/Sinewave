@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <scenes>
         <!--Tab View Controller-->
@@ -763,7 +763,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="BxL-gr-qlt">
-                                                            <rect key="frame" x="1" y="1" width="67.5" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="68" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffe-8A-Kvf">
@@ -932,6 +932,16 @@
                                     <action selector="playButtonPressed:" target="R3X-xG-2Km" id="peu-kk-vEF"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWj-s3-Oin">
+                                <rect key="frame" x="78" y="13" width="80" height="32"/>
+                                <buttonCell key="cell" type="push" title="Import" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sJl-w5-Wi7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="importButtonPressed:" target="R3X-xG-2Km" id="4x3-16-7ZZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="top" secondItem="cEU-ds-aBC" secondAttribute="top" constant="20" id="0O9-Zu-IWk"/>
@@ -942,10 +952,12 @@
                             <constraint firstItem="RHj-cZ-Tu1" firstAttribute="width" secondItem="bWM-Cb-11q" secondAttribute="width" id="QiM-uV-8e8"/>
                             <constraint firstAttribute="bottom" secondItem="RHj-cZ-Tu1" secondAttribute="bottom" constant="20" id="W1a-3J-wPp"/>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="centerX" secondItem="cEU-ds-aBC" secondAttribute="centerX" id="Z59-Qp-Oc8"/>
+                            <constraint firstAttribute="bottom" secondItem="WWj-s3-Oin" secondAttribute="bottom" constant="20" id="a1R-bP-SMf"/>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="leading" secondItem="cEU-ds-aBC" secondAttribute="leading" constant="20" id="fV7-cV-JnH"/>
                             <constraint firstAttribute="trailing" secondItem="wz5-XD-7Wv" secondAttribute="trailing" constant="20" id="izY-1z-PeH"/>
                             <constraint firstItem="bWM-Cb-11q" firstAttribute="leading" secondItem="cEU-ds-aBC" secondAttribute="leading" constant="20" id="kL5-EQ-912"/>
                             <constraint firstAttribute="bottom" secondItem="bWM-Cb-11q" secondAttribute="bottom" constant="20" id="sj6-d8-tE0"/>
+                            <constraint firstItem="WWj-s3-Oin" firstAttribute="leading" secondItem="RHj-cZ-Tu1" secondAttribute="trailing" constant="12" id="uxY-tc-rOa"/>
                         </constraints>
                     </view>
                     <connections>
