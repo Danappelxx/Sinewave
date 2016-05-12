@@ -929,7 +929,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="playButtonPressed:" target="R3X-xG-2Km" id="peu-kk-vEF"/>
+                                    <segue destination="db8-mr-ci4" kind="show" identifier="songPlayerWindow" id="vMZ-AF-vAg"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWj-s3-Oin">
@@ -1043,6 +1043,33 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1216" y="626"/>
+        </scene>
+        <!--Song Player View Controller-->
+        <scene sceneID="RLX-Tp-ZyS">
+            <objects>
+                <viewController id="db8-mr-ci4" customClass="SongPlayerViewController" customModule="Sinewave" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="L3S-x0-Sou">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="r2Z-VB-6Jk" customClass="SinewaveView" customModule="Sinewave" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="410" height="260"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="r2Z-VB-6Jk" firstAttribute="leading" secondItem="L3S-x0-Sou" secondAttribute="leading" constant="20" id="0Mf-t4-ehl"/>
+                            <constraint firstAttribute="bottom" secondItem="r2Z-VB-6Jk" secondAttribute="bottom" constant="20" id="0ZM-fD-2Mk"/>
+                            <constraint firstAttribute="trailing" secondItem="r2Z-VB-6Jk" secondAttribute="trailing" constant="20" id="2Ue-3P-u0D"/>
+                            <constraint firstItem="r2Z-VB-6Jk" firstAttribute="top" secondItem="L3S-x0-Sou" secondAttribute="top" constant="20" id="RbQ-6L-i4X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sinewaveView" destination="r2Z-VB-6Jk" id="Ocf-1L-qUb"/>
+                    </connections>
+                </viewController>
+                <customObject id="ZW8-M8-eE9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="1387"/>
         </scene>
     </scenes>
 </document>

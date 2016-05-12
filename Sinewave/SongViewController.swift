@@ -29,9 +29,6 @@ class SongViewController: NSViewController {
         notesTableView.reloadData()
     }
 
-    @IBAction func playButtonPressed(sender: NSButton) {
-        NotesPlayer(notes: self.notes).play()
-    }
     @IBAction func plusButtonPressed(sender: NSButton) {
         self.notes.append(Note(frequency: 440, amplitude: 1, from: 0, to: 1))
     }
@@ -151,6 +148,22 @@ extension SongViewController {
         case NSModalResponseOK: return panel.URLs.first.flatMap { try? String(contentsOfURL: $0) }
 
         default: return nil
+
+        }
+    }
+}
+
+//MARK: Song
+extension SongViewController {
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+
+        switch (segue.identifier ?? "") {
+
+        case "songPlayerWindow":
+            let songPlayerVC = segue.destinationController as! SongPlayerViewController
+            songPlayerVC.notes = self.notes
+
+        default: return
 
         }
     }
