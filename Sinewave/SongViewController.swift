@@ -30,7 +30,7 @@ class SongViewController: NSViewController {
     }
 
     @IBAction func playButtonPressed(sender: NSButton) {
-        self.playNotes()
+        NotesPlayer(notes: self.notes).play()
     }
     @IBAction func plusButtonPressed(sender: NSButton) {
         self.notes.append(Note(frequency: 440, amplitude: 1, from: 0, to: 1))
@@ -136,27 +136,6 @@ extension SongViewController: NSTableViewDelegate {
     }
     func tableView(tableView: NSTableView, shouldEditTableColumn tableColumn: NSTableColumn?, row: Int) -> Bool {
         return true
-    }
-}
-
-//MARK: Sound
-extension SongViewController {
-    func playNotes() {
-
-        guard !notes.isEmpty else { return }
-
-        for note in notes {
-            let player = FunctionPlayer()
-            player.amplitude = note.amplitude
-            player.frequency = note.frequency
-
-            NSTimer.after(note.from - 0.05) {
-                player.start()
-            }
-            NSTimer.after(note.to) {
-                player.stop()
-            }
-        }
     }
 }
 
