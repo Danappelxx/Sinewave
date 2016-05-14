@@ -29,6 +29,7 @@ class SongPlayerViewController: NSViewController {
     }
 
     func playNotes() {
+        let absolute = CFAbsoluteTimeGetCurrent()
         for note in notes {
             let player = FunctionPlayer()
             player.amplitude = note.amplitude
@@ -36,12 +37,12 @@ class SongPlayerViewController: NSViewController {
 
             let boxed = Box(note)
 
-            NSTimer.after(note.from) { [weak self] in
+            NSTimer.at(time: absolute + note.from) { [weak self] in
                 guard let sself = self else { return }
                 player.start()
                 sself.currentNotes.append(boxed)
             }
-            NSTimer.after(note.to) { [weak self] in
+            NSTimer.at(time: absolute + note.to + 0.05) { [weak self] in
                 guard let sself = self else { return }
                 player.stop()
                 guard let index = sself.currentNotes.indexOf({ $0 === boxed }) else { return }

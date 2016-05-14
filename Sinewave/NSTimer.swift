@@ -28,6 +28,15 @@ extension NSTimer {
 
     // MARK: Schedule timers
 
+    public class func at(time time: NSTimeInterval, _ block: () -> ()) -> NSTimer {
+        let timer: NSTimer = {
+            return CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, time, 0, 0, 0) { _ in
+                block()
+            }
+        }()
+        timer.start()
+        return timer
+    }
     /// Create and schedule a timer that will call `block` once after the specified time.
 
     public class func after(interval: NSTimeInterval, _ block: () -> Void) -> NSTimer {
