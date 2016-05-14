@@ -942,6 +942,16 @@
                                     <action selector="importButtonPressed:" target="R3X-xG-2Km" id="4x3-16-7ZZ"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ExX-2S-QTJ">
+                                <rect key="frame" x="158" y="13" width="70" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOA-jx-uly">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveButtonPressed:" target="R3X-xG-2Km" id="RJE-Yy-nN0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="top" secondItem="cEU-ds-aBC" secondAttribute="top" constant="20" id="0O9-Zu-IWk"/>
@@ -949,6 +959,7 @@
                             <constraint firstItem="RHj-cZ-Tu1" firstAttribute="leading" secondItem="bWM-Cb-11q" secondAttribute="trailing" constant="2" id="5UW-Li-0BK"/>
                             <constraint firstAttribute="bottom" secondItem="XMx-FW-Ra9" secondAttribute="bottom" constant="20" id="BcW-H5-zRe"/>
                             <constraint firstAttribute="trailing" secondItem="XMx-FW-Ra9" secondAttribute="trailing" constant="20" id="Hkw-bj-eph"/>
+                            <constraint firstAttribute="bottom" secondItem="ExX-2S-QTJ" secondAttribute="bottom" constant="20" id="I4B-Nn-Axe"/>
                             <constraint firstItem="RHj-cZ-Tu1" firstAttribute="width" secondItem="bWM-Cb-11q" secondAttribute="width" id="QiM-uV-8e8"/>
                             <constraint firstAttribute="bottom" secondItem="RHj-cZ-Tu1" secondAttribute="bottom" constant="20" id="W1a-3J-wPp"/>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="centerX" secondItem="cEU-ds-aBC" secondAttribute="centerX" id="Z59-Qp-Oc8"/>
@@ -956,6 +967,7 @@
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="leading" secondItem="cEU-ds-aBC" secondAttribute="leading" constant="20" id="fV7-cV-JnH"/>
                             <constraint firstAttribute="trailing" secondItem="wz5-XD-7Wv" secondAttribute="trailing" constant="20" id="izY-1z-PeH"/>
                             <constraint firstItem="bWM-Cb-11q" firstAttribute="leading" secondItem="cEU-ds-aBC" secondAttribute="leading" constant="20" id="kL5-EQ-912"/>
+                            <constraint firstItem="ExX-2S-QTJ" firstAttribute="leading" secondItem="WWj-s3-Oin" secondAttribute="trailing" constant="12" id="qUC-Uo-vwJ"/>
                             <constraint firstAttribute="bottom" secondItem="bWM-Cb-11q" secondAttribute="bottom" constant="20" id="sj6-d8-tE0"/>
                             <constraint firstItem="WWj-s3-Oin" firstAttribute="leading" secondItem="RHj-cZ-Tu1" secondAttribute="trailing" constant="12" id="uxY-tc-rOa"/>
                         </constraints>

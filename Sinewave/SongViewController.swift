@@ -44,6 +44,20 @@ class SongViewController: NSViewController {
         }
         self.notes = notes
     }
+    @IBAction func saveButtonPressed(sender: NSButton) {
+        let panel = NSSavePanel()
+
+        switch panel.runModal() {
+
+        case NSModalResponseOK:
+            guard let path = panel.URL?.path else { return }
+            let content = notes.serialize().dataUsingEncoding(NSUTF8StringEncoding)
+            NSFileManager.defaultManager()
+                .createFileAtPath(path + ".csv", contents: content, attributes: nil)
+
+        default: break
+        }
+    }
 }
 
 extension SongViewController: NSTableViewDataSource {
@@ -69,6 +83,7 @@ extension SongViewController: NSTableViewDataSource {
             cell = textView.superview?.superview?.superview as? NSTableCellView,
             row = (cell.superview as? NSTableRowView).flatMap(self.notesTableView.rowForView(_:)),
             colIndex = cell.identifier?.characters.last.flatMap(String.init(_:)).flatMap ({ Int($0) })
+            where self.notes.indices.contains(row)
             else {
                 print("could not get necessary information")
                 return

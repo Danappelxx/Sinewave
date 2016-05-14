@@ -44,7 +44,8 @@ class SongPlayerViewController: NSViewController {
             NSTimer.after(note.to) { [weak self] in
                 guard let sself = self else { return }
                 player.stop()
-                sself.currentNotes.removeAtIndex(sself.currentNotes.indexOf { $0 === boxed }!)
+                guard let index = sself.currentNotes.indexOf({ $0 === boxed }) else { return }
+                sself.currentNotes.removeAtIndex(index)
             }
         }
     }

@@ -53,3 +53,11 @@ struct NoteImporter {
         )
     }
 }
+
+extension SequenceType where Generator.Element == Note {
+    func serialize() -> String {
+        let header = "frequency,amplitude,from,to"
+        let lines = self.map { "\($0.frequency),\($0.amplitude),\($0.from),\($0.to)" }
+        return header + "\r\n" + lines.joinWithSeparator("\r\n")
+    }
+}
