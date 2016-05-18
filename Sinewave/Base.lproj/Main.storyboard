@@ -899,10 +899,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-Cb-11q">
+                            <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-Cb-11q">
                                 <rect key="frame" x="14" y="13" width="37" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="evk-j5-Qld"/>
+                                    <constraint firstAttribute="width" constant="25" id="N2s-T4-a37"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HDq-Zn-Wgx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -912,8 +912,11 @@
                                     <action selector="plusButtonPressed:" target="R3X-xG-2Km" id="BnX-fH-DSK"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RHj-cZ-Tu1">
+                            <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="RHj-cZ-Tu1">
                                 <rect key="frame" x="41" y="13" width="37" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="F4J-ei-iLg"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="50y-NF-kCC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -922,18 +925,11 @@
                                     <action selector="minusButtonPressed:" target="R3X-xG-2Km" id="Z1O-eG-IC9"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-FW-Ra9">
-                                <rect key="frame" x="401" y="13" width="65" height="32"/>
-                                <buttonCell key="cell" type="push" title="play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CXQ-iD-TCe">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="db8-mr-ci4" kind="show" identifier="songPlayerWindow" id="vMZ-AF-vAg"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWj-s3-Oin">
                                 <rect key="frame" x="78" y="13" width="80" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="yyr-ib-4i6"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Import" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sJl-w5-Wi7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -944,6 +940,9 @@
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ExX-2S-QTJ">
                                 <rect key="frame" x="158" y="13" width="70" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="IIj-Z9-XCf"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOA-jx-uly">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -952,27 +951,59 @@
                                     <action selector="saveButtonPressed:" target="R3X-xG-2Km" id="RJE-Yy-nN0"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fDH-SY-QVp">
+                                <rect key="frame" x="228" y="17" width="173" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="168" id="ow7-Au-OET"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xDd-QX-sb0" id="nGU-2Z-kIZ">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="VU7-dg-a2j">
+                                        <items>
+                                            <menuItem title="Normal" state="on" id="xDd-QX-sb0"/>
+                                            <menuItem title="Harmony" id="bvl-SM-rAm"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-FW-Ra9">
+                                <rect key="frame" x="400" y="13" width="66" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="qsy-rF-shT"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CXQ-iD-TCe">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="db8-mr-ci4" kind="show" identifier="songPlayerWindow" id="vMZ-AF-vAg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="top" secondItem="cEU-ds-aBC" secondAttribute="top" constant="20" id="0O9-Zu-IWk"/>
-                            <constraint firstItem="bWM-Cb-11q" firstAttribute="top" secondItem="wz5-XD-7Wv" secondAttribute="bottom" constant="6" id="4CQ-nR-s6y"/>
                             <constraint firstItem="RHj-cZ-Tu1" firstAttribute="leading" secondItem="bWM-Cb-11q" secondAttribute="trailing" constant="2" id="5UW-Li-0BK"/>
+                            <constraint firstItem="bWM-Cb-11q" firstAttribute="top" secondItem="wz5-XD-7Wv" secondAttribute="bottom" constant="6" id="6Zc-N3-Pd0"/>
+                            <constraint firstItem="XMx-FW-Ra9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fDH-SY-QVp" secondAttribute="trailing" constant="8" id="8JK-aI-bzz"/>
                             <constraint firstAttribute="bottom" secondItem="XMx-FW-Ra9" secondAttribute="bottom" constant="20" id="BcW-H5-zRe"/>
                             <constraint firstAttribute="trailing" secondItem="XMx-FW-Ra9" secondAttribute="trailing" constant="20" id="Hkw-bj-eph"/>
                             <constraint firstAttribute="bottom" secondItem="ExX-2S-QTJ" secondAttribute="bottom" constant="20" id="I4B-Nn-Axe"/>
-                            <constraint firstItem="RHj-cZ-Tu1" firstAttribute="width" secondItem="bWM-Cb-11q" secondAttribute="width" id="QiM-uV-8e8"/>
                             <constraint firstAttribute="bottom" secondItem="RHj-cZ-Tu1" secondAttribute="bottom" constant="20" id="W1a-3J-wPp"/>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="centerX" secondItem="cEU-ds-aBC" secondAttribute="centerX" id="Z59-Qp-Oc8"/>
                             <constraint firstAttribute="bottom" secondItem="WWj-s3-Oin" secondAttribute="bottom" constant="20" id="a1R-bP-SMf"/>
                             <constraint firstItem="wz5-XD-7Wv" firstAttribute="leading" secondItem="cEU-ds-aBC" secondAttribute="leading" constant="20" id="fV7-cV-JnH"/>
                             <constraint firstAttribute="trailing" secondItem="wz5-XD-7Wv" secondAttribute="trailing" constant="20" id="izY-1z-PeH"/>
+                            <constraint firstItem="fDH-SY-QVp" firstAttribute="leading" secondItem="ExX-2S-QTJ" secondAttribute="trailing" constant="8" id="jIG-Pt-b5L"/>
                             <constraint firstItem="bWM-Cb-11q" firstAttribute="leading" secondItem="cEU-ds-aBC" secondAttribute="leading" constant="20" id="kL5-EQ-912"/>
                             <constraint firstItem="ExX-2S-QTJ" firstAttribute="leading" secondItem="WWj-s3-Oin" secondAttribute="trailing" constant="12" id="qUC-Uo-vwJ"/>
                             <constraint firstAttribute="bottom" secondItem="bWM-Cb-11q" secondAttribute="bottom" constant="20" id="sj6-d8-tE0"/>
                             <constraint firstItem="WWj-s3-Oin" firstAttribute="leading" secondItem="RHj-cZ-Tu1" secondAttribute="trailing" constant="12" id="uxY-tc-rOa"/>
+                            <constraint firstAttribute="bottom" secondItem="fDH-SY-QVp" secondAttribute="bottom" constant="20" id="vVn-Gs-YIU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="modificationsPopup" destination="fDH-SY-QVp" id="yKL-Te-K8p"/>
                         <outlet property="notesTableView" destination="wV2-Mg-A41" id="vXu-fz-qeH"/>
                     </connections>
                 </viewController>

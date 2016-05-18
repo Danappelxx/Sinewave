@@ -11,12 +11,14 @@ import Cocoa
 class SongViewController: NSViewController {
 
     @IBOutlet weak var notesTableView: NSTableView!
+    @IBOutlet weak var modificationsPopup: NSPopUpButton!
 
     var notes = [Note]() {
         didSet {
             self.notesTableView.reloadData()
         }
     }
+    var modification: NoteModifications { return NoteModifications(rawValue: modificationsPopup.selectedItem!.title)! }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,6 +179,7 @@ extension SongViewController {
         case "songPlayerWindow":
             let songPlayerVC = segue.destinationController as! SongPlayerViewController
             songPlayerVC.notes = self.notes
+            songPlayerVC.modification = self.modification
 
         default: return
 

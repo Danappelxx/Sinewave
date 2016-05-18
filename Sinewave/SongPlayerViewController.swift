@@ -13,10 +13,27 @@ final class Box<T> {
     init(_ value: T) { self.value = value }
 }
 
+enum NoteModifications: String {
+    case Normal
+    case Harmony
+
+    func modify(notes notes: [Note]) -> [Note] {
+        switch self {
+        case .Normal:
+            return notes
+        case .Harmony:
+            return Array(notes
+                .map { [$0, $0.modify(frequency: $0.frequency * 2)] }
+                .flatten())
+        }
+    }
+}
+
 class SongPlayerViewController: NSViewController {
 
     @IBOutlet weak var sinewaveView: SinewaveView!
     var notes: [Note]!
+    var modification: NoteModifications!
 
     override func viewDidAppear() {
         self.playNotes()
@@ -30,6 +47,9 @@ class SongPlayerViewController: NSViewController {
 
     func playNotes() {
         let absolute = CFAbsoluteTimeGetCurrent()
+
+        let notes = self.modification.modify(notes: self.notes)
+
         for note in notes {
             let player = FunctionPlayer()
             player.amplitude = note.amplitude
