@@ -8,7 +8,7 @@
         <!--Tab View Controller-->
         <scene sceneID="5PC-D0-W3k">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="SPa-5Y-t7Y" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="SPa-5Y-t7Y" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="ggq-1P-L8t"/>
                         <tabViewItem id="Z4M-Wp-0eM"/>
